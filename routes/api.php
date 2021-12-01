@@ -9,6 +9,7 @@ use App\Http\Controllers\ProprietarioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegiaoController;
+use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ViaturaController;
 
 /*
@@ -95,3 +96,9 @@ Route::get("/getProprietario/endereco/{id}", [EnderecoController::class, "getPro
 Route::post("/saveendereco", [EnderecoController::class, "store"]);
 Route::delete("/deleteendereco/{id}", [EnderecoController::class, "destroy"]);
 Route::put("/editendereco/{id}", [EnderecoController::class, "update"]);
+
+// rotas para a usuarios
+Route::get("/getusuario/{id?}", [UsuarioController::class, "index"]);
+Route::post("/saveusuario", [UsuarioController::class, "store"]);
+Route::delete("/deleteusuario/{id}", [UsuarioController::class, "destroy"]);
+Route::put("/editusuario/{id}", [UsuarioController::class, "update"]);
