@@ -40,7 +40,7 @@ class EquipamentoAxiliarController extends Controller
             'modelo' => 'required',
             'nrIdentificacao' => 'required',
             'custoEstimadoViatura' => 'required',
-            'viatura_id ' => 'required',
+            
         ]);
 
         if ($validator->fails()) {
@@ -60,8 +60,7 @@ class EquipamentoAxiliarController extends Controller
                 :  ["Resultado" => "Falha ao guardar dados"];
         }
     }
-
-
+   
 
     /**
      * Update the specified resource in storage.

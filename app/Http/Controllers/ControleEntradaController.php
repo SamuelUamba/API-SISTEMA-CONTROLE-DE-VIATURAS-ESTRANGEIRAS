@@ -39,7 +39,8 @@ class ControleEntradaController extends Controller
             'dataSaidaPrevista' => 'required',
             'dataProrogacao' => 'required',
             'dataFimProrogacao' => 'required',
-            'status' => 'required'
+            'status' => 'required',
+            'controleEntrada_id' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -51,6 +52,8 @@ class ControleEntradaController extends Controller
             $controleEntrada->dataProrogacao = $request->dataProrogacao;
             $controleEntrada->dataFimProrogacao = $request->dataFimProrogacao;
             $controleEntrada->status = $request->status;
+            $controleEntrada->controleEntrada_id = $request->controleEntrada_id;
+
 
             $controleEntrada->created_at = date('Y-m-d H:i:s');
             $save =   $controleEntrada->save();

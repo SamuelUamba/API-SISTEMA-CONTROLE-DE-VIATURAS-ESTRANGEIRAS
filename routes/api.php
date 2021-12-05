@@ -2,14 +2,20 @@
 
 use App\Http\Controllers\ControleEntradaController;
 use App\Http\Controllers\EnderecoController;
+use App\Http\Controllers\enderecoController2;
+use App\Http\Controllers\EquipamentoAxiliarController;
+use App\Http\Controllers\EquipamentosController;
 use App\Http\Controllers\InstanciaController;
 use App\Http\Controllers\LocalEmissaoCartaController;
 use App\Http\Controllers\NacionalidadeController;
+use App\Http\Controllers\ProprietariosController;
 use App\Http\Controllers\ProprietarioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegiaoController;
 use App\Http\Controllers\ViaturaController;
+use App\Http\Controllers\viaturasController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -57,11 +63,12 @@ Route::put("/editcontroleentrada/{id}", [ControleEntradaController::class, "upda
 
 // rotas para a viatura
 Route::get("/getviatura/{id?}", [ViaturaController::class, "index"]);
+Route::delete("/deleteviatura/{id}", [ViaturaController::class, "destroy"]);
+
 Route::get("/getContoleEntrada/viatura/{id}", [ViaturaController::class, "getContoleEntrada"]);
 Route::get("/getEquipAuxiliar/viatura/{id}", [ViaturaController::class, "getEquipAuxiliar"]);
 Route::get("/getProprietario/viatura/{id}", [ViaturaController::class, "getProprietario"]);
 Route::post("/saveviatura", [ViaturaController::class, "store"]);
-Route::delete("/deleteviatura/{id}", [ViaturaController::class, "destroy"]);
 Route::put("/editviatura/{id}", [ViaturaController::class, "update"]);
 
 // rotas para a instancia
@@ -82,12 +89,14 @@ Route::post("/saveproprietario", [ProprietarioController::class, "store"]);
 Route::delete("/deleteproprietario/{id}", [ProprietarioController::class, "destroy"]);
 Route::put("/editproprietario/{id}", [ProprietarioController::class, "update"]);
 
+
+
 // rotas para a equipamentoauxiliar
-Route::get("/getequipamentoauxiliar/{id?}", [equipamentoauxiliarController::class, "index"]);
-Route::get("/getViatura/equipamentoauxiliar/{id}", [equipamentoauxiliarController::class, "getViatura"]);
-Route::post("/saveequipamentoauxiliar", [equipamentoauxiliarController::class, "store"]);
-Route::delete("/deleteequipamentoauxiliar/{id}", [equipamentoauxiliarController::class, "destroy"]);
-Route::put("/editequipamentoauxiliar/{id}", [equipamentoauxiliarController::class, "update"]);
+Route::get("/getequipamentoauxiliar/{id?}", [EquipamentoAxiliarController::class, "index"]);
+Route::get("/getViatura/equipamentoauxiliar/{id}", [EquipamentoAxiliarController::class, "getViatura"]);
+Route::post("/saveequipamentoauxiliar", [EquipamentoAxiliarController::class, "store"]);
+Route::delete("/deleteequipamentoauxiliar/{id}", [EquipamentoAxiliarController::class, "destroy"]);
+Route::put("/editequipamentoauxiliar/{id}", [EquipamentoAxiliarController::class, "update"]);
 
 // rotas para a endereco
 Route::get("/getendereco/{id?}", [EnderecoController::class, "index"]);
@@ -95,3 +104,11 @@ Route::get("/getProprietario/endereco/{id}", [EnderecoController::class, "getPro
 Route::post("/saveendereco", [EnderecoController::class, "store"]);
 Route::delete("/deleteendereco/{id}", [EnderecoController::class, "destroy"]);
 Route::put("/editendereco/{id}", [EnderecoController::class, "update"]);
+
+
+//rotas de Correcao
+Route::post("/saveproprietario2", [ProprietariosController::class, "store2"]);
+Route::post("/saveendereco2", [enderecoController2::class, "store2"]);
+Route::post("/saveviatura2", [viaturasController::class, "store2"]);
+
+Route::get("/counter", [ProprietariosController::class, "counter"]);

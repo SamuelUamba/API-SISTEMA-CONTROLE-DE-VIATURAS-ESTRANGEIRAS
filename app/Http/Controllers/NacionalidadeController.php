@@ -37,12 +37,14 @@ class NacionalidadeController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nomePais' => 'required',
+            'proprietario_id' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 401);
         } else {
             $nacionalidade = new Nacionalidade;
             $nacionalidade->nomePais = $request->nomePais;
+            $nacionalidade->proprietario_id=$request->proprietario_id;
             $nacionalidade->created_at = date('Y-m-d H:i:s');
             $save =   $nacionalidade->save();
             return $save  ? ["Resultado" => "Dados guardados com sucesso"]
