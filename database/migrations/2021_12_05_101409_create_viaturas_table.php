@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateViaturaTable extends Migration
+class CreateViaturasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateViaturaTable extends Migration
      */
     public function up()
     {
-        Schema::create('viatura', function (Blueprint $table) {
+        Schema::create('viaturas', function (Blueprint $table) {
             $table->id();
             $table->string("nrMatricula");
             $table->string("marca");
@@ -24,12 +24,7 @@ class CreateViaturaTable extends Migration
             $table->string("cor");
             $table->integer("nrLugares");
             $table->double('custoEstimadoViatura');
-
-            // chave estrangeira de ligacao com controle de entrada..........
-            $table->foreignId('controleEntrada_id')
-                ->constrained('controle_entrada')->onUpdate('cascade')->onDelete('cascade');
-
-
+            $table->integer('controleEntrada_id');
             $table->timestamps();
         });
     }
@@ -41,6 +36,6 @@ class CreateViaturaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('viatura');
+        Schema::dropIfExists('viaturas');
     }
 }

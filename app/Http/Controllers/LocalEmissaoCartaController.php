@@ -37,7 +37,8 @@ class LocalEmissaoCartaController extends Controller
 
             'dataEmissao' => 'required',
             'pais' => 'required',
-            'cidade' => 'required'
+            'cidade' => 'required',
+            'proprietario_id' => 'required'
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 401);
@@ -46,6 +47,7 @@ class LocalEmissaoCartaController extends Controller
             $localEmCarta->pais = $request->pais;
             $localEmCarta->dataEmissao = $request->dataEmissao;
             $localEmCarta->cidade = $request->cidade;
+            $localEmCarta->proprietario_id=$request->proprietario_id;
             $localEmCarta->created_at = date('Y-m-d H:i:s');
             $save =   $localEmCarta->save();
             return $save  ? ["Resultado" => "Dados guardados com sucesso"]

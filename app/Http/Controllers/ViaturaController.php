@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Viatura;
+use App\Models\viaturas;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -21,7 +22,7 @@ class ViaturaController extends Controller
      */
     public function index($id = null)
     {
-        return  $id ? Viatura::find($id) : Viatura::all();
+        return  $id ? viaturas::find($id) : viaturas::all();
     }
 
 
@@ -66,8 +67,10 @@ class ViaturaController extends Controller
             return $save  ? ["Resultado" => "Dados guardados com sucesso"]
                 :  ["Resultado" => "Falha ao guardar dados"];
         }
-    }
 
+        
+    }
+    
 
     /**
      * Update the specified resource in storage.
@@ -108,8 +111,6 @@ class ViaturaController extends Controller
             $viatura->nrLugares = $request->nrLugares;
             $viatura->custoEstimadoViatura = $request->custoEstimadoViatura;
             $viatura->controleEntrada_id = $request->controleEntrada_id;
-
-
             $viatura->updated_at = date('Y-m-d H:i:s');
             $update =  $viatura->save();
 
@@ -126,7 +127,7 @@ class ViaturaController extends Controller
      */
     public function destroy($id)
     {
-        $viatura = Viatura::find($id);
+        $viatura = viaturas::find($id);
         $delete = $viatura->delete();
 
         return $delete ? ["Resultado" => "Dados apagados com sucesso"]
@@ -138,7 +139,7 @@ class ViaturaController extends Controller
     public function getProprietario($viatura_id)
     {
 
-        $viatura = Viatura::find($viatura_id);
+        $viatura = viaturas::find($viatura_id);
         if ($viatura == null)
             return null;
         else {
@@ -152,7 +153,7 @@ class ViaturaController extends Controller
 
     function getContoleEntrada($viatura_id)
     {
-        $viatura = Viatura::find($viatura_id);
+        $viatura = viaturas::find($viatura_id);
         if ($viatura == null)
             return null;
         else {
@@ -166,7 +167,7 @@ class ViaturaController extends Controller
 
     function  getEquipAuxiliar($viatura_id)
     {
-        $viatura = Viatura::find($viatura_id);
+        $viatura = viaturas::find($viatura_id);
         if ($viatura == null)
             return null;
         else {
