@@ -106,13 +106,11 @@ Route::post("/saveendereco", [EnderecoController::class, "store"]);
 Route::delete("/deleteendereco/{id}", [EnderecoController::class, "destroy"]);
 Route::put("/editendereco/{id}", [EnderecoController::class, "update"]);
 
-<<<<<<< HEAD
 // rotas para a usuarios
 Route::get("/getusuario/{id?}", [UsuarioController::class, "index"]);
 Route::post("/saveusuario", [UsuarioController::class, "store"]);
 Route::delete("/deleteusuario/{id}", [UsuarioController::class, "destroy"]);
 Route::put("/editusuario/{id}", [UsuarioController::class, "update"]);
-=======
 
 //rotas de Correcao
 Route::post("/saveproprietario2", [ProprietariosController::class, "store2"]);
@@ -120,4 +118,3 @@ Route::post("/saveendereco2", [enderecoController2::class, "store2"]);
 Route::post("/saveviatura2", [viaturasController::class, "store2"]);
 
 Route::get("/counter", [ProprietariosController::class, "counter"]);
->>>>>>> 1062c737138323e0a0aa9037451a743787aa3070
