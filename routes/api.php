@@ -13,7 +13,6 @@ use App\Http\Controllers\ProprietarioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegiaoController;
-use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ViaturaController;
 use App\Http\Controllers\viaturasController;
 
@@ -65,7 +64,6 @@ Route::put("/editcontroleentrada/{id}", [ControleEntradaController::class, "upda
 // rotas para a viatura
 Route::get("/getviatura/{id?}", [ViaturaController::class, "index"]);
 Route::delete("/deleteviatura/{id}", [ViaturaController::class, "destroy"]);
-
 Route::get("/getContoleEntrada/viatura/{id}", [ViaturaController::class, "getContoleEntrada"]);
 Route::get("/getEquipAuxiliar/viatura/{id}", [ViaturaController::class, "getEquipAuxiliar"]);
 Route::get("/getProprietario/viatura/{id}", [ViaturaController::class, "getProprietario"]);
@@ -93,9 +91,8 @@ Route::put("/editproprietario/{id}", [ProprietarioController::class, "update"]);
 
 
 // rotas para a equipamentoauxiliar
-Route::get("/getequipamentoauxiliar/{id?}", [EquipamentoAxiliarController::class, "index"]);
+Route::get("/getequipamentoauxiliar/{id?}", [EquipamentoAxiliarController::class, "getEquipameto"]);
 Route::get("/getViatura/equipamentoauxiliar/{id}", [EquipamentoAxiliarController::class, "getViatura"]);
-Route::post("/saveequipamentoauxiliar", [EquipamentoAxiliarController::class, "store"]);
 Route::delete("/deleteequipamentoauxiliar/{id}", [EquipamentoAxiliarController::class, "destroy"]);
 Route::put("/editequipamentoauxiliar/{id}", [EquipamentoAxiliarController::class, "update"]);
 
@@ -106,15 +103,12 @@ Route::post("/saveendereco", [EnderecoController::class, "store"]);
 Route::delete("/deleteendereco/{id}", [EnderecoController::class, "destroy"]);
 Route::put("/editendereco/{id}", [EnderecoController::class, "update"]);
 
-// rotas para a usuarios
-Route::get("/getusuario/{id?}", [UsuarioController::class, "index"]);
-Route::post("/saveusuario", [UsuarioController::class, "store"]);
-Route::delete("/deleteusuario/{id}", [UsuarioController::class, "destroy"]);
-Route::put("/editusuario/{id}", [UsuarioController::class, "update"]);
 
 //rotas de Correcao
 Route::post("/saveproprietario2", [ProprietariosController::class, "store2"]);
 Route::post("/saveendereco2", [enderecoController2::class, "store2"]);
 Route::post("/saveviatura2", [viaturasController::class, "store2"]);
-
+Route::post("/saveequipamentoauxiliar", [EquipamentoAxiliarController::class, "store2"]);
+Route::get("/getcontrole/{id?}", [ControleEntradaController::class, "getViatura2"]);
+Route::get("/getproprietariovviatura/{id?}", [ProprietarioController::class, "getproprietario"]);
 Route::get("/counter", [ProprietariosController::class, "counter"]);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Proprietario;
+use App\Models\Proprietarios;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -21,7 +22,7 @@ class ProprietarioController extends Controller
      */
     public function index($id = null)
     {
-        return  $id ? Proprietario::find($id) : Proprietario::all();
+        return  $id ? Proprietarios::find($id) : Proprietarios::all();
     }
 
 
@@ -93,7 +94,7 @@ class ProprietarioController extends Controller
             return response()->json($validator->errors(), 401);
         } else {
 
-            $proprietario = proprietario::find($request->id);
+            $proprietario = Proprietarios::find($request->id);
             $proprietario->nome = $request->nome;
             $proprietario->tempoPermanencia = $request->tempoPermanencia;
             $proprietario->objectivo = $request->objectivo;
@@ -120,7 +121,7 @@ class ProprietarioController extends Controller
      */
     public function destroy($id)
     {
-        $proprietario = Proprietario::find($id);
+        $proprietario = Proprietarios::find($id);
         $delete = $proprietario->delete();
 
         return $delete ? ["Resultado" => "Dados apagados com sucesso"]
@@ -130,7 +131,7 @@ class ProprietarioController extends Controller
 
     function getRegiao($proprietario_id)
     {
-        $proprietario = proprietario::find($proprietario_id);
+        $proprietario = Proprietarios::find($proprietario_id);
         if ($proprietario == null)
             return null;
         else {
@@ -143,7 +144,7 @@ class ProprietarioController extends Controller
 
     function getViatura($proprietario_id)
     {
-        $proprietario = proprietario::find($proprietario_id);
+        $proprietario = Proprietarios::find($proprietario_id);
         if ($proprietario == null)
             return null;
         else {
@@ -156,7 +157,7 @@ class ProprietarioController extends Controller
 
     function getLocalEmissao($proprietario_id)
     {
-        $proprietario = proprietario::find($proprietario_id);
+        $proprietario = Proprietarios::find($proprietario_id);
         if ($proprietario == null)
             return null;
         else {
@@ -169,7 +170,7 @@ class ProprietarioController extends Controller
 
     function getNacionalidade($proprietario_id)
     {
-        $proprietario = proprietario::find($proprietario_id);
+        $proprietario = Proprietarios::find($proprietario_id);
         if ($proprietario == null)
             return null;
         else {
@@ -182,7 +183,7 @@ class ProprietarioController extends Controller
 
     function getEndereco($proprietario_id)
     {
-        $proprietario = proprietario::find($proprietario_id);
+        $proprietario = Proprietarios::find($proprietario_id);
         if ($proprietario == null)
             return null;
         else {
@@ -191,5 +192,10 @@ class ProprietarioController extends Controller
             else
                 return  $proprietario->getEndereco()->get();
         }
+    }
+
+    function getproprietario($proprietario_id)
+    {
+        return Proprietarios::where('viatura_id',$proprietario_id)->get(); 
     }
 }

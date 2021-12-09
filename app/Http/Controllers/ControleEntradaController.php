@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ControleEntrada;
+use App\Models\viaturas;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -125,5 +126,11 @@ class ControleEntradaController extends Controller
             else
                 return $controleEntrada->getViatura;
         }
+    }
+
+    public function  getViatura2($controleEntrada_id)
+    {
+        return ControleEntrada::where('controleEntrada_id',$controleEntrada_id)->get();
+       
     }
 }
